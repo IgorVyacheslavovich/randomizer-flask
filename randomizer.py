@@ -96,14 +96,18 @@ H2_POOL = [
 
 @app.route('/random-h2')
 def random_h2():
-    """Просто 7 рандомных H2"""
     count = int(request.args.get('count', 7))
-    h2_list = sample(H2_POOL, min(count, len(H2_POOL)))
+    available = min(count, len(H2_POOL))
+    h2_list = random.sample(H2_POOL, available)
     
     return jsonify({
         "h2s": h2_list,
         "count": len(h2_list)
     })
+
+@app.route('/')
+def home():
+    return "Randomizer OK. /random-h2?count=7"
 
 KEYWORDS_DB = [
     "шпонированные стеновые панели",
