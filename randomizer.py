@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 import random
+import os
 
 app = Flask(__name__)
 
@@ -236,14 +237,11 @@ INTERNAL_ARTICLES = [
     "https://blog-decorewood.ru/shpon-v-interere-kak-povysit-likvidnost-nedvizhimogo-obekta/"
 ]
 
-@app.route("/random-links", methods=["GET"])
+@app.route("/random-links")
 def get_random_links():
-    # Рандомные 3 ссылки
     random_links = random.sample(INTERNAL_ARTICLES, 3)
-    
-    return jsonify({
-        "links": random_links
-    })
+    return jsonify({"links": random_links})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
