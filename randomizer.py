@@ -105,10 +105,6 @@ def random_h2():
         "count": len(h2_list)
     })
 
-@app.route('/')
-def home():
-    return "Randomizer OK. /random-h2?count=7"
-
 KEYWORDS_DB = [
     "шпонированные стеновые панели",
     "МДФ панели для стен",
@@ -220,8 +216,8 @@ KEYWORDS_DB = [
     "мдф плита",
     "фасадный декор",
     "шпон",
-    "шпон это"
-    "фальшпанель"
+    "шпон это",
+    "фальшпанель",
     "шпон что это",
     "шпонированный мдф",
     "руспанель что это",
@@ -460,7 +456,6 @@ INTERNAL_ARTICLES = [
     "https://blog-decorewood.ru/ispolzovanie-shpona-v-trcz-kak-sozdat-uyutnye-zony-otdyha-i-fudkorty/",
     "https://blog-decorewood.ru/kak-paneli-iz-shpona-bystro-obnovyat-imidzh-starogo-bcz-bez-remonta/",
     "https://blog-decorewood.ru/effektivnaya-ekspluatacziya-shponirovannyh-panelej-pri-klininge/",
-    "https://blog-decorewood.ru/effektivnaya-ekspluatacziya-shponirovannyh-panelej-pri-klininge-2/",
     "https://blog-decorewood.ru/stenovye-paneli-iz-shpona-buk-eko-elegantnost-i-uyut-v-vashem-interere/",
     "https://blog-decorewood.ru/stenovye-paneli-iz-shpona-yasen-stil-i-uyut-v-kazhdom-dome/",
     "https://blog-decorewood.ru/stenovye-paneli-iz-shpona-oreh-amerikanskij-elegantnost-i-stil-v-interere/",
@@ -485,7 +480,8 @@ INTERNAL_ARTICLES = [
 
 @app.route("/")
 def home():
-    return jsonify({"status": "OK", "endpoint": "/random-links"})
+    return jsonify({"status": "OK", "endpoints": ["/random-h2", "/random-keywords", "/random-links"]})
+
 
 @app.route("/random-links")
 def get_random_links():
