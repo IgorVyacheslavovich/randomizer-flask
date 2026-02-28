@@ -237,6 +237,10 @@ INTERNAL_ARTICLES = [
     "https://blog-decorewood.ru/shpon-v-interere-kak-povysit-likvidnost-nedvizhimogo-obekta/"
 ]
 
+@app.route("/")
+def home():
+    return jsonify({"status": "OK", "endpoint": "/random-links"})
+
 @app.route("/random-links")
 def get_random_links():
     random_links = random.sample(INTERNAL_ARTICLES, 3)
