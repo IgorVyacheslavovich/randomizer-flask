@@ -785,7 +785,7 @@ def home():
 
 @app.route("/random-links")
 def get_random_links():
-    random_links = random.sample(INTERNAL_ARTICLES, 3)
+    random_links = random.sample(INTERNAL_ARTICLES, 5)
     return jsonify({"links": random_links})
 
 @app.route('/ping', methods=['GET'])
